@@ -340,14 +340,33 @@ svg {
   .tester
   {
     width: 650px;
+
   }
 
-  .ss
+  .searchWithInput
   {
     padding: 0 10px;
     width: 650px;
     caret-color: red;
     transition: width 0.4s linear;
   }
+
+  .aa {
+    position: absolute;
+    z-index: 99;
+    top: 100%;
+    padding-left: 25px;
+  }
+  .oneResult
+  {
+
+  }
+
+  .ratingStar
+  {
+    color:yellow!important;
+    margin-right: 5px;
+  }
+
 
 /* */

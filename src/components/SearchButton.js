@@ -26,12 +26,12 @@ class SearchButton extends React.Component {
            }
        }).responseText;
        searchMovie = JSON.parse(searchMovie);
-       searchInput.classList.add("ss");
+       searchInput.classList.add("searchWithInput");
        this.props.handleChange({results: searchMovie});
     }
     else
     {
-      searchInput.classList.remove("ss");
+      searchInput.classList.remove("searchWithInput");
     }
   }
 
