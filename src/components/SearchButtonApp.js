@@ -35,7 +35,14 @@ import MovieCard from './MovieCard';
 
 
 
-
+// <div className = "d-flex overflow-auto">
+//
+//     {this.state.searchResults.map( movie =>
+//       <div className = "card col-2 col-sm-2 col-md-2 col-lg-2 align-items-center">
+//         <MovieCard title = {movie.title} imgSrc = {movie.poster_path} overview = {movie.overview}></MovieCard>
+//       </div>
+//     )}
+// </div>
 
 
 class SearchButtonApp extends React.Component {
@@ -50,16 +57,25 @@ class SearchButtonApp extends React.Component {
     }
 
   render() {
+    // var x = document.getElementById("searchButton");
+    // if (x.value != "")
+    // {
+    //    x.classList.add("searchValue");
+    // }
+    // else
+    // {
+    //    x.classList.add("searchValue");
+    // }
     return (
-        <div>
+        <div className = 'd-flex flex-column'>
           <SearchButton handleChange = {this.handleValueChange}/>
-          <div className = "d-flex overflow-auto">
-            <h3>Search Results</h3>
-              {this.state.searchResults.map( movie =>
-                <div className = "card col-2 col-sm-2 col-md-2 col-lg-2 align-items-center">
-                  <MovieCard title = {movie.title} imgSrc = {movie.poster_path} overview = {movie.overview}></MovieCard>
-                </div>
-              )}
+          <div id="myInputautocomplete-list" className="autocomplete-items list-group text-left">
+            {this.state.searchResults.map( movie =>
+              <div className = "list-group-item list-group-item-action d-flex tester">
+                <h1>{movie.title}</h1>
+                <img src = {"https://image.tmdb.org/t/p/original" + movie.backdrop_path} className="card-img-top helper"></img>
+              </div>
+            )}
           </div>
         </div>
     );

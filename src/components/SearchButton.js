@@ -10,11 +10,11 @@ class SearchButton extends React.Component {
   //   }
   handleValueChange = (e) =>
   {
-
-    var changledValue = e.target.value;
-    if(changledValue != "")
+    var changedvalue = e.target.value;
+    var searchInput = document.getElementById("search");
+    if(changedvalue != "")
     {
-       var newUrl = "https://api.themoviedb.org/3/search/multi?api_key=e98409c238903704a47f9d04c21bf484&language=en-US&query=" + changledValue.replace(" ", "%") +"&page=1&include_adult=false";
+       var newUrl = "https://api.themoviedb.org/3/search/multi?api_key=e98409c238903704a47f9d04c21bf484&language=en-US&query=" + changedvalue.replace(" ", "%") +"&page=1&include_adult=false";
        var searchMovie = $.ajax({
            type: 'GET',
            url: newUrl,
@@ -26,12 +26,12 @@ class SearchButton extends React.Component {
            }
        }).responseText;
        searchMovie = JSON.parse(searchMovie);
-
+       searchInput.classList.add("ss");
        this.props.handleChange({results: searchMovie});
     }
-    else if (searchButton.value == "")
+    else
     {
-      searchButton.classList.remove("searchValue");
+      searchInput.classList.remove("ss");
     }
   }
 

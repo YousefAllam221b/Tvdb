@@ -256,7 +256,7 @@ svg {
 
   .searchbar:hover > .search_input{
   padding: 0 10px;
-  width: 450px;
+  width: 650px;
   caret-color:red;
   transition: width 0.4s linear;
   }
@@ -286,7 +286,7 @@ svg {
 
   .searchValue{
     padding: 0 10px;
-    width: 450px;
+    width: 650px;
     caret-color:red;
     transition: width 0.4s linear;
   }
@@ -332,6 +332,22 @@ svg {
     padding: 0!important;
   }
 
+  .helper
+  {
+    width: 100px;
+    height: 200px;
+  }
+  .tester
+  {
+    width: 650px;
+  }
 
+  .ss
+  {
+    padding: 0 10px;
+    width: 650px;
+    caret-color: red;
+    transition: width 0.4s linear;
+  }
 
 /* */
