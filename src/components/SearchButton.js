@@ -32,6 +32,7 @@ class SearchButton extends React.Component {
     else
     {
       searchInput.classList.remove("searchWithInput");
+      this.props.handleChange({results: []});
     }
   }
 

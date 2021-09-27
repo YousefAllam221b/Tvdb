@@ -351,7 +351,7 @@ svg {
     transition: width 0.4s linear;
   }
 
-  .aa {
+  .serachResults {
     position: absolute;
     z-index: 99;
     top: 100%;
