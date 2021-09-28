@@ -1,5 +1,5 @@
 import React from 'react';
-
+import OffCanvasPage from './OffCanvasPage.js';
 
 class MoviePage extends React.Component {
 
@@ -7,7 +7,7 @@ class MoviePage extends React.Component {
 
   canvasId = '#'+ this.props.movies.id;
   render() {
-    function checkProp(movie)
+    function checkDate(movie)
     {
       var date = '';;
       if (movie.first_air_date != undefined)
@@ -74,16 +74,9 @@ class MoviePage extends React.Component {
       return canvasId;
     }
 
-
-
-
-
-
     return (
 
-
       <div className = 'd-flex mt-auto'>
-
 
         <div className="d-flex rounded-3" type="button" data-bs-toggle="offcanvas" data-bs-target={"#offcanvasTop"+ checkId(this.props.movies)} aria-controls={"offcanvasTop"+ checkId(this.props.movies)}>
         {
@@ -94,7 +87,7 @@ class MoviePage extends React.Component {
               checkName(this.props.movies)
             }
             {
-              checkProp(this.props.movies)
+              checkDate(this.props.movies)
             }
           <div className = 'd-flex'>
             <i className="fa fa-star ratingStar"></i>
@@ -115,7 +108,7 @@ class MoviePage extends React.Component {
 
 
             <button id = 'close-button' type="button" className="btn-close text-reset me-3" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-
+            <OffCanvasPage movie = {this.props.movies} checkName = {checkName} checkId = {checkId} checkRating = {checkRating} checkDate = {checkDate}/>
           </div>
 
 
