@@ -369,4 +369,40 @@ svg {
   }
 
 
+
+
+  /*CANVAS STYLES*/
+  .offcanvas
+  {
+    height: 100vh;
+    flex: 1;
+    width: 100vw;
+    background-color: #edeeef;
+    transform: scale(0.1);
+  }
+
+  .project-image
+  {
+    height: 20rem;
+    width: 40rem;
+  }
+
+  .offcanvas-header
+  {
+    width: 100vw;
+  }
+
+  .offcanvas-body::-webkit-scrollbar
+  {
+    display: none;
+  }
+
+  .offcanvas-body
+  {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  /*END*/
+
+
 /* */

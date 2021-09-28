@@ -33,8 +33,6 @@ import MovieCard from './MovieCard';
 //
 //           });
 
-
-
 // <div className = "d-flex overflow-auto">
 //
 //     {this.state.searchResults.map( movie =>
