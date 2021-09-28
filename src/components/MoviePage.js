@@ -5,7 +5,7 @@ class MoviePage extends React.Component {
 
 
 
-
+  canvasId = '#'+ this.props.movies.id;
   render() {
     function checkProp(movie)
     {
@@ -23,6 +23,7 @@ class MoviePage extends React.Component {
 
     function checkImg(movie)
     {
+
       var img = '';;
 
       if (movie.backdrop_path != undefined)
@@ -53,7 +54,7 @@ class MoviePage extends React.Component {
 
     function checkRating(movie)
     {
-      var rate = '';;
+      var rate = '';
 
       if (movie.vote_average != undefined)
       {
@@ -62,40 +63,65 @@ class MoviePage extends React.Component {
       return rate;
     }
 
+    function checkId(movie)
+    {
+      var canvasId = '';
+
+      if (movie.id != undefined)
+      {
+        canvasId = movie.id
+      }
+      return canvasId;
+    }
+
+
+
+
+
+
     return (
 
 
-            <div className="d-flex rounded-3" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop3" aria-controls="offcanvasTop3">
+      <div className = 'd-flex mt-auto'>
 
-                {
-                  checkImg(this.props.movies)
-                }
-                <div className  = 'd-flex flex-column col-9'>
-                    {
-                      checkName(this.props.movies)
-                    }
-                    {
-                      checkProp(this.props.movies)
-                    }
-                  <div className = 'd-flex'>
-                    <i className="fa fa-star ratingStar"></i>
-                    {
-                      checkRating(this.props.movies)
-                    }
-                  </div>
-                </div>
 
-              <div className="offcanvas offcanvas-top container d-flex flex-column align-items-center" tabIndex="-1" id="offcanvasTop3" aria-labelledby="offcanvasTopLabel3">
+        <div className="d-flex rounded-3" type="button" data-bs-toggle="offcanvas" data-bs-target={"#offcanvasTop"+ checkId(this.props.movies)} aria-controls={"offcanvasTop"+ checkId(this.props.movies)}>
+        {
+        checkImg(this.props.movies)
+        }
+        <div className  = 'd-flex flex-column col-9'>
+            {
+              checkName(this.props.movies)
+            }
+            {
+              checkProp(this.props.movies)
+            }
+          <div className = 'd-flex'>
+            <i className="fa fa-star ratingStar"></i>
+            {
+              checkRating(this.props.movies)
+            }
+          </div>
+        </div></div>
 
-                <div className = 'container-fluid me-auto d-flex flex-row justify-content-end align-items-center'>
+      <div className="offcanvas offcanvas-top container d-flex flex-column align-items-center" tabIndex="-1" id={"offcanvasTop"+ checkId(this.props.movies)} aria-labelledby="offcanvasTopLabel">
 
-                  <h1>{this.props.movies.title}</h1>
-                  <button id = 'close-button' type="button" class="btn-close text-reset me-3" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 
-                </div>
-              </div>
-            </div>
+          <div className = 'container-fluid me-auto d-flex flex-row justify-content-between align-items-center'>
 
+
+            {checkName(this.props.movies)}
+            <h2>{this.props.movies.id}</h2>
+
+
+            <button id = 'close-button' type="button" className="btn-close text-reset me-3" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+
+          </div>
+
+
+        </div>
+
+      </div>
 
     )
   }
