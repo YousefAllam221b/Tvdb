@@ -1,6 +1,8 @@
 import React from 'react';
 import SearchButton from './SearchButton';
 import MovieCard from './MovieCard';
+
+import MoviePage from './MoviePage';
 // var searchButton = document.getElementById("search");
 // var searchButtonValue = "";
 //
@@ -70,23 +72,7 @@ class SearchButtonApp extends React.Component {
     // {
     //    x.classList.add("searchValue");
     // }
-    function checkProp(movie)
-    {
-      var date;
-      if (movie.first_air_date != undefined)
-      {
-        date = <h6>{movie.first_air_date.split('-')[0]}</h6>
-      }
-      else if (movie.release_date != undefined)
-      {
-        date = <h6>{movie.release_date.split('-')[0]}</h6>
-      }
-      else
-      {
-        date = '';
-      }
-      return date;
-    }
+
 
     function checkEmptyResults(searchResults)
     {
@@ -97,18 +83,8 @@ class SearchButtonApp extends React.Component {
         searchResults = searchResults.slice(0,10);
         return searchResults.map( movie =>
           <div className = "list-group-item list-group-item-action d-flex tester oneResult">
-            <img src = {"https://image.tmdb.org/t/p/original" + movie.backdrop_path} className="card-img-top col-3"></img>
-            <div className  = 'd-flex flex-column col-9'>
-              <h5 className = ''>{movie.title}</h5>
-              <h5 className = ''>{movie.original_name}</h5>
-              {
-                checkProp(movie)
-              }
-              <div className = 'd-flex'>
-                <i className="fa fa-star ratingStar"></i>
-                <h6>{movie.vote_average}</h6>
-              </div>
-            </div>
+            <MoviePage movies = {movie}/>
+
           </div>
         )
       }
