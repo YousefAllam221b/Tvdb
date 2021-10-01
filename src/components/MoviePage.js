@@ -3,8 +3,18 @@ import OffCanvasPage from './OffCanvasPage.js';
 
 class MoviePage extends React.Component {
 
-
-
+  constructor(props) {
+      super(props);
+      this.state = {
+        showComponent: false,
+      };
+      this._onButtonClick = this._onButtonClick.bind(this);
+    }
+    _onButtonClick() {
+    this.setState({
+      showComponent: true,
+    });
+  }
   canvasId = '#'+ this.props.movies.id;
   render() {
     function checkDate(movie)
@@ -58,7 +68,7 @@ class MoviePage extends React.Component {
 
       if (movie.vote_average != undefined)
       {
-        rate = <h6>{movie.vote_average}</h6>
+        rate = <h6>{movie.vote_average}/10</h6>
       }
       return rate;
     }
@@ -78,7 +88,7 @@ class MoviePage extends React.Component {
 
       <div className = 'd-flex mt-auto'>
 
-        <div className="d-flex rounded-3" type="button" data-bs-toggle="offcanvas" data-bs-target={"#offcanvasTop"+ checkId(this.props.movies)} aria-controls={"offcanvasTop"+ checkId(this.props.movies)}>
+        <div onClick={this._onButtonClick} className="d-flex rounded-3" type="button" data-bs-toggle="offcanvas" data-bs-target={"#offcanvasTop"+ checkId(this.props.movies)} aria-controls={"offcanvasTop"+ checkId(this.props.movies)}>
         {
         checkImg(this.props.movies)
         }
@@ -100,16 +110,15 @@ class MoviePage extends React.Component {
       <div className="offcanvas offcanvas-top container d-flex flex-column align-items-center" tabIndex="-1" id={"offcanvasTop"+ checkId(this.props.movies)} aria-labelledby="offcanvasTopLabel">
 
 
-          <div className = 'container-fluid me-auto d-flex flex-row justify-content-between align-items-center'>
+
+        {this.state.showComponent ?
+           <OffCanvasPage movie = {this.props.movies} checkName = {checkName} checkId = {checkId} checkRating = {checkRating} checkDate = {checkDate}/> :
+           null
+        }
 
 
-            {checkName(this.props.movies)}
-            <h2>{this.props.movies.id}</h2>
 
 
-            <button id = 'close-button' type="button" className="btn-close text-reset me-3" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-            <OffCanvasPage movie = {this.props.movies} checkName = {checkName} checkId = {checkId} checkRating = {checkRating} checkDate = {checkDate}/>
-          </div>
 
 
         </div>
