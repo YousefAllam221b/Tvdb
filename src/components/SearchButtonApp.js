@@ -73,7 +73,6 @@ class SearchButtonApp extends React.Component {
     //    x.classList.add("searchValue");
     // }
 
-
     function checkEmptyResults(searchResults)
     {
       var res;
@@ -98,7 +97,7 @@ class SearchButtonApp extends React.Component {
         <div className = ''>
           <div className = 'd-flex flex-column'>
             <SearchButton handleChange = {this.handleValueChange}/>
-            <div className = 'serachResults'>
+            <div  id = 'searchResultsDiv'  className = 'serachResults'>
               {checkEmptyResults(this.state.searchResults)}
             </div>
           </div>
