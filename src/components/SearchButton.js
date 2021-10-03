@@ -51,12 +51,11 @@ class SearchButton extends React.Component {
            {
              if(searchResults != undefined)
              {
-
                that.props.handleChange({results: searchResults});
                clearInterval(k)}
              }
              , 100);
-       
+
     }
     else
     {

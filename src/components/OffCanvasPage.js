@@ -3,7 +3,7 @@ import React from 'react';
 var allInfo = 2;
 class OffCanvas extends React.Component {
 
-  state = {info: [], allreadyDone: false}
+  state = {info: [], allreadyDone: false, cast :[]}
 
   url = `https://api.themoviedb.org/3/${this.props.movie.media_type}/${this.props.movie.id}?api_key=e98409c238903704a47f9d04c21bf484&append_to_response=videos,images`;
 
@@ -32,6 +32,7 @@ class OffCanvas extends React.Component {
         {
           if(allInfo != undefined)
           {
+            console.log(allInfo);
             that.setState({info: allInfo, allreadyDone: true})
             clearInterval(k)}
           }
@@ -97,6 +98,32 @@ class OffCanvas extends React.Component {
       }
     }
 
+    function getCast(movie)
+    {
+          var castUrl = `https://api.themoviedb.org/3/${movie.media_type}/${movie.id}?api_key=e98409c238903704a47f9d04c21bf484&append_to_response=credits`;
+          var castInfo;
+          var f = fetch(castUrl, {
+            method: 'GET',
+          }).then(response => {
+            if(response.ok){return response.json();}
+            throw new Error('Request failed!');},
+           networkError => {}).then(jsonResponse => {
+
+            castInfo = jsonResponse;
+            return jsonResponse
+          });
+          var k = setInterval(
+            function()
+            {
+              if(castInfo != undefined)
+              {
+                console.log('castInfo');
+                console.log(castInfo.credits);
+                that.setState({cast: castInfo.credits.cast})
+                clearInterval(k)}
+              }
+              , 100);
+      }
 
     return (
 
@@ -107,6 +134,13 @@ class OffCanvas extends React.Component {
           <button id = 'close-button' type="button" className="btn-close text-reset me-3" data-bs-dismiss="offcanvas" aria-label="Close"></button>
           </div>
           {checkMediaType(this.props.movie)}
+          {getCast(this.props.movie)}
+          <div className = 'container d-flex overflow-auto'>
+            {this.state.cast.map( castMember =>
+              <h6 className = 'm-3'>{castMember.name}</h6>)
+            }
+          </div>
+
           <div className = 'd-flex flex-column'>
             {checkPoster(this.state.info)}
             <div className = 'd-flex flex-column'>
@@ -121,6 +155,7 @@ class OffCanvas extends React.Component {
               </div>
               </div>
             </div>
+
           </div>
 
 
