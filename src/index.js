@@ -6,7 +6,7 @@ import SearchButtonApp from './components/SearchButtonApp';
 import './index.css';
 
 ReactDOM.render(
-  <App />,
+  <App key = 'root'/>,
   document.getElementById('root'),
 
 );

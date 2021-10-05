@@ -120,8 +120,7 @@ class App extends React.Component {
         {
           if(firstList != undefined)
           {
-            console.log('heyeyy');
-            console.log(firstList);
+
             that.setState({firstListInfo: firstList, firstListAllreadyDone: true})
             clearInterval(k1)}
           }
@@ -135,8 +134,7 @@ class App extends React.Component {
         {
           if(bestDrama2014 != undefined)
           {
-            console.log('heyeyy');
-            console.log(bestDrama2014);
+
             that.setState({bestDrama2014Info: bestDrama2014, bestDrama2014AllreadyDone: true})
             clearInterval(k2)}
           }
@@ -149,7 +147,7 @@ class App extends React.Component {
       {
         return that.state.firstListInfo.results.map( movie =>
         <div className = "card col-2 col-sm-2 col-md-2 col-lg-2 align-items-center">
-          <MovieCard title = {movie.title} imgSrc = {movie.poster_path} overview = {movie.overview}></MovieCard>
+          <MovieCard key = {movie.title + 'MovieCard'} title = {movie.title} imgSrc = {movie.poster_path} overview = {movie.overview}></MovieCard>
         </div>
 
         )
@@ -162,7 +160,7 @@ class App extends React.Component {
       {
         return that.state.bestDrama2014Info.results.map( movie =>
         <div className = "card col-2 col-sm-2 col-md-2 col-lg-2 align-items-center">
-          <MovieCard title = {movie.title} imgSrc = {movie.poster_path} overview = {movie.overview}></MovieCard>
+          <MovieCard key = {movie.title + 'MovieCard'} title = {movie.title} imgSrc = {movie.poster_path} overview = {movie.overview}></MovieCard>
         </div>
 
         )
